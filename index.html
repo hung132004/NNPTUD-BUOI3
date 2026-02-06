@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bảng quản lý sản phẩm</title>
+  <style>
+    body{font-family: Arial, Helvetica, sans-serif; padding:20px;}
+    .controls{display:flex;gap:12px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+    input[type="search"]{padding:8px;width:260px;border:1px solid #ccc;border-radius:4px}
+    select{padding:6px}
+    button{padding:8px 10px;border:1px solid #666;background:#fff;border-radius:4px;cursor:pointer}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    thead th{background:#333;color:#fff;padding:10px;text-align:left}
+    tbody tr:nth-child(odd){background:#000;color:#fff}
+    tbody tr:nth-child(even){background:#fff;color:#000}
+    td, th{padding:8px;border:1px solid #ddd;vertical-align:middle}
+    td img{max-width:140px;height:auto;display:block;object-fit:contain}
+    .pagination{display:flex;gap:8px;align-items:center;margin-top:12px}
+    .page-btn{padding:6px 8px;border:1px solid #ccc;background:#f9f9f9}
+    .active-page{background:#007bff;color:#fff}
+    .small{font-size:0.9em;color:#666}
+    @media (max-width:700px){td img{max-width:80px}}
+  </style>
+</head>
+<body>
+  <h2>Bảng quản lý sản phẩm</h2>
+
+  <div class="controls">
+    <label>Search title: <input id="search" type="search" placeholder="Search by title..." /></label>
+
+    <label>Items per page:
+      <select id="perPage">
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="20">20</option>
+      </select>
+    </label>
+
+    <div>
+      <button id="sortPriceAsc">Sắp xếp Giá ↑</button>
+      <button id="sortPriceDesc">Sắp xếp Giá ↓</button>
+      <button id="sortNameAsc">Sắp xếp Tên A→Z</button>
+      <button id="sortNameDesc">Sắp xếp Tên Z→A</button>
+    </div>
+
+    <div class="small">Tổng <span id="totalCount">0</span> sản phẩm</div>
+  </div>
+
+  <table id="productsTable">
+    <thead>
+      <tr>
+        <th>Ảnh</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Updated</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div class="pagination" id="pagination"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
